@@ -19,7 +19,7 @@ loginForm.addEventListener("submit",(e)=>{
         if(res.ok){
            location.href = "/profile"
         } else {
-            alert("trumpet sound")
+            alert("Incorrect username and/or password")
         }
     })
 })

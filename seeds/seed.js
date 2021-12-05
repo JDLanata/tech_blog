@@ -26,7 +26,7 @@ const seed = async ()=>{
     ],{
         individualHooks:true
     })
-    const petsData = await Pet.bulkCreate([
+    const blogPost = await Pet.bulkCreate([
         {
             name:"Shiva",
             species:"cat",
@@ -46,7 +46,7 @@ const seed = async ()=>{
             UserId:2
         },
     ])
-    const groupsData = await Group.bulkCreate([
+    const blogComment = await Group.bulkCreate([
         {
             name:"Multi-cat households",
             description:"How to take care of more than 1 cat!",

@@ -5,13 +5,15 @@ class Post extends Model {}
 
 Post.init({
   title:{
-      type:DataTypes.STRING
+      type:DataTypes.STRING,
+      allowNull: false
   },
   description:{
-      type:DataTypes.TEXT
+      type:DataTypes.TEXT,
+      allowNull: false
   },
 },{
     sequelize, 
 });
 
-module.exports=Post
+module.exports = Post;

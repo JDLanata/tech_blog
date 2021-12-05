@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 class User extends Model {}
 
 User.init({
-    // add properites here, ex:
+
     username: {
          type: DataTypes.STRING,
          unique:true,

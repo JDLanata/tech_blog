@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { Post,User } = require("../../models");
+const { Post, User, Comment } = require("../../models");
 
 router.get("/", (req, res) => {
   Post.findAll({
-    include:[User]
+    include: [User]
   })
     .then(dbPosts => {
       if (dbPosts.length) {
@@ -20,13 +20,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  if(!req.session.user){
-    return res.status(401).send("log in first you knucklehead!")
+  if (!req.session.user) {
+    return res.status(401).send("you must log in first!")
   }
   Post.create({
     title: req.body.title,
     description: req.body.description,
-    UserId:req.session.user.id
+    UserId: req.session.user.id
   })
     .then(newPost => {
       res.json(newPost);
