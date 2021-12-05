@@ -47,7 +47,7 @@ router.post("/:id", (req, res) => {
   if(!req.session.user){
     return res.redirect("/login")}
   Comment.create({
-    body: req.body.body,
+    words: req.body.body,
     username: req.session.user.username,
     PostId: req.params.id,
     UserId: req.session.user.id,

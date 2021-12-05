@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {User,Pet,Group} = require('../../models');
+const {User,Post,Comment} = require('../../models');
 const bcrypt = require("bcrypt");
 
 router.get("/",(req,res)=>{
     User.findAll({
-        include:[Pet,Group]
+        include:[Post,Comment]
     }).then(dbUsers=>{
         if(dbUsers.length){
             res.json(dbUsers)
@@ -18,11 +18,10 @@ router.get("/",(req,res)=>{
     })
 })
 
-router.post("/",(req,res)=>{
+router.post("/signup",(req,res)=>{
     // const encryptedPassword = bcrypt.hashSync(req.body.password,3);
     User.create({
         username:req.body.username,
-        // password:encryptedPassword,
         password:req.body.password,
         email:req.body.email
     }).then(newUser=>{

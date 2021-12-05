@@ -1,7 +1,7 @@
 const sequelize = require("../config/connection");
 const {User,Post,Comment} = require("../models")
 
-const seed = async ()=>{
+const seed = async () =>{
     const userData = await User.bulkCreate([
         {
             username:"joe",
@@ -9,61 +9,56 @@ const seed = async ()=>{
             email:"joe@joe.joe"
         },
         {
-            username:"louis",
+            username:"juan",
             password:"password",
-            email:"louis@joe.joe"
+            email:"juan@joe.joe"
         },
         {
-            username:"brett",
+            username:"steve",
             password:"password",
-            email:"brett@joe.joe"
-        },
-        {
-            username:"michael",
-            password:"password",
-            email:"michael@joe.joe"
+            email:"steve@joe.joe"
         },
     ],{
         individualHooks:true
     })
     const blogPost = await Post.bulkCreate([
         {
-            name:"Shiva",
-            species:"cat",
-            age:1,
+            title:"Joe's post",
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus leo diam, ac lacinia leo mattis id. Duis et dolor iaculis, dictum quam tincidunt, dictum enim. Suspendisse non arcu neque. Mauris nec aliquam orci, eget imperdiet tellus.",
             UserId:1
         },
         {
-            name:"Bahamut",
-            species:"cat",
-            age:1,
-            UserId:1
-        },
-        {
-            name:"Bandit",
-            species:"cat",
-            age:4,
+            title:"Juan's post",
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus leo diam, ac lacinia leo mattis id. Duis et dolor iaculis, dictum quam tincidunt, dictum enim. Suspendisse non arcu neque. Mauris nec aliquam orci, eget imperdiet tellus. In porta eros a enim sagittis, et pharetra augue malesuada. Mauris id commodo eros. Quisque eu justo a lacus consectetur ultrices eu viverra felis.",
             UserId:2
         },
+        {
+            title:"Steve's post",
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus leo diam, ac lacinia leo mattis id. Duis et dolor iaculis, dictum quam tincidunt, dictum enim. Suspendisse non arcu neque. Mauris nec aliquam orci, eget imperdiet tellus. In porta eros a enim sagittis, et pharetra augue malesuada. Mauris id commodo eros. Quisque eu justo a lacus consectetur ultrices eu viverra felis.",
+            UserId:3
+        }
     ])
     const blogComment = await Comment.bulkCreate([
         {
-            name:"Multi-cat households",
-            description:"How to take care of more than 1 cat!",
+            words:"This is my comment and I like it",
+            username:"steve",
+            UserId:3,
+            PostId:1
         },
         {
-            name:"Pugs are the best!",
-            description:"I love their squishy faces!",
+            words:"Comment",
+            username:"joe",
+            UserId:1,
+            PostId:2
         },
         {
-            name:"Only Exotics!",
-            description:"no normal pets here, monkeys or weirder",
-        },
+            words:"more comments",
+            username:"juan",
+            UserId:2,
+            PostId:3
+        }
         
     ])
-    groupsData[0].addUser(1)
-    groupsData[0].addUser(2)
-    userData[2].addGroups([2,3])
 }
 
 sequelize.sync({force:true}).then(()=>{

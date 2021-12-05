@@ -8,10 +8,15 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+    helpers: {
+        short: function (aString) {return aString.toString().slice(0,15)},
+        owner: function (blogId, userId) {return blogId === userId}
+    }
+});
 
 // Requiring our models for syncing
-const {User,Pet,Group} = require('./models');
+const {User,Post,Comment} = require('./models');
 const routes = require("./controllers");
 
 app.engine('handlebars', hbs.engine);
