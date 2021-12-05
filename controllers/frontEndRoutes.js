@@ -5,8 +5,9 @@ const {Post,User,Comment} = require('../models');
 router.get("/",(req,res)=>{
     Post.findAll({
         include:[User]
-    }).then(PostData=>{
-        const hbsPosts = PostData.map(Post=>Post.get({plain:true}))
+    }).then(postData=>{
+        const hbsPosts = postData.map(post=>post.get({plain:true}))
+        // res.json(hbsPosts)
         if(req.session.user){
             res.render("home",{
                 posts:hbsPosts,
@@ -14,6 +15,7 @@ router.get("/",(req,res)=>{
             })
         }else{
             res.render("home",{
+                
                 posts:hbsPosts,
                 
             })
@@ -26,10 +28,14 @@ router.get("/profile",(req,res)=>{
         return res.redirect("/login")
     }
     User.findByPk(req.session.user.id,{
-        include:[Post]
+        include:[Post, Comment]
     }).then(userData=>{
         const hbsUser = userData.get({plain:true});
-        res.render("profile",hbsUser)
+        // res.json(hbsUser)
+        res.render("profile",
+        {
+            users:hbsUser,
+        })
     })
 })
 

@@ -21,7 +21,7 @@ const seed = async () =>{
     ],{
         individualHooks:true
     })
-    const blogPost = await Post.bulkCreate([
+    const postData = await Post.bulkCreate([
         {
             title:"Joe's post",
             description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus leo diam, ac lacinia leo mattis id. Duis et dolor iaculis, dictum quam tincidunt, dictum enim. Suspendisse non arcu neque. Mauris nec aliquam orci, eget imperdiet tellus.",
@@ -38,7 +38,7 @@ const seed = async () =>{
             UserId:3
         }
     ])
-    const blogComment = await Comment.bulkCreate([
+    const postComment = await Comment.bulkCreate([
         {
             words:"This is my comment and I like it",
             username:"steve",

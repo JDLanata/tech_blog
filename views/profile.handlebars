@@ -1,1 +1,16 @@
 <h1>Welcome back, {{username}}</h1>
+<h3>hello</h3>
+
+{{#each users}}
+hello
+  <div class="card">
+    <div class="card-divider">
+      <div class="card-title">
+      <a href="/api/post/{{id}}">{{title}}</a>
+      </div>
+      <div class="created">
+        {{Post.title}}
+      </div>
+    </div>
+  </div>
+{{/each}}

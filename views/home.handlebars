@@ -4,3 +4,22 @@
   </div>
 </div>
 <h2>Welcome {{username}}</h2>
+
+
+
+
+{{#each posts}}
+  <div class="card">
+    <div class="card-divider">
+      <div class="card-title">
+      <a href="/api/post/{{id}}">{{title}}</a>
+      </div>
+      <div class="created">
+        Created by: {{User.username}} on {{short createdAt}}
+      </div>
+    </div>
+    <div class="card-section">
+      {{description}}
+    </div>
+  </div>
+{{/each}}
